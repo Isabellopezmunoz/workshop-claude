@@ -42,17 +42,17 @@ workshop-claude/
 
 ## Comandos
 
-| Comando            | Acción                                          |
-| :----------------- | :---------------------------------------------- |
-| `npm install`      | Instala dependencias                            |
-| `npm run dev`      | Arranca el dev server en `localhost:4321`       |
-| `npm run build`    | Construye el sitio en `./dist/`                 |
-| `npm run preview`  | Previsualiza el build local antes de desplegar  |
+| Comando           | Acción                                         |
+| :---------------- | :--------------------------------------------- |
+| `npm install`     | Instala dependencias                           |
+| `npm run dev`     | Arranca el dev server en `localhost:4321`      |
+| `npm run build`   | Construye el sitio en `./dist/`                |
+| `npm run preview` | Previsualiza el build local antes de desplegar |
 
 ## Cómo trabajar en el proyecto con Claude Code
 
 1. Arranca el dev server: `npm run dev`.
-2. Pide cambios concretos a Claude: *"añade una sección de FAQ"*, *"cambia la paleta a tonos verdes"*, etc.
+2. Pide cambios concretos a Claude: _"añade una sección de FAQ"_, _"cambia la paleta a tonos verdes"_, etc.
 3. Si tienes skills definidas en `.claude/skills/`, invócalas explícitamente con `/nombre-skill` o deja que se activen solas según su `description`.
 
 ## Despliegue en Vercel
@@ -63,5 +63,5 @@ workshop-claude/
 
 ## Notas de aprendizaje
 
-- Las **skills** viven en `.claude/skills/` y describen *cuándo* y *cómo* Claude debe actuar en un dominio concreto del proyecto.
+- Las **skills** viven en `.claude/skills/` y describen _cuándo_ y _cómo_ Claude debe actuar en un dominio concreto del proyecto.
 - Este repo es deliberadamente pequeño: el foco está en el flujo de Claude Code, no en la complejidad del código.

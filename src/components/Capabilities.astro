@@ -1,10 +1,11 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from 'astro-icon/components'
 
 const capacidades = [
   {
     nombre: 'Hooks',
     icono: 'lucide:webhook',
+    href: '/docs/hooks',
     descripcion:
       'Comandos de shell que se ejecutan en respuesta a eventos del agente (antes/después de una tool, al terminar una respuesta, etc.). Te permiten automatizar formato, linters, notificaciones o cualquier acción reactiva.',
     ejemplo: 'Ejecutar prettier cada vez que Claude edita un .ts',
@@ -12,6 +13,7 @@ const capacidades = [
   {
     nombre: 'Slash commands',
     icono: 'lucide:slash',
+    href: '/docs/slash-commands',
     descripcion:
       'Atajos que invocas escribiendo "/" seguido del nombre. Algunos vienen con el CLI (/help, /clear, /config), y otros se definen tú mismo o vienen de skills.',
     ejemplo: '/init, /review, /verify',
@@ -19,11 +21,12 @@ const capacidades = [
   {
     nombre: 'MCP servers',
     icono: 'lucide:server',
+    href: '/docs/mcp',
     descripcion:
       'Model Context Protocol — servidores externos que dan a Claude acceso a herramientas y datos que no vienen de serie (Figma, Chrome DevTools, Gmail, bases de datos…).',
     ejemplo: 'Conectar Figma para leer y escribir diseños desde el editor',
   },
-];
+]
 ---
 
 <section id="capacidades" class="border-b border-border-base">
@@ -34,29 +37,42 @@ const capacidades = [
         Más allá de las skills
       </h2>
       <p class="mt-4 text-lg text-text-secondary">
-        Claude Code se extiende con otras piezas que se combinan entre sí.
-        Cada una resuelve un tipo distinto de problema.
+        Claude Code se extiende con otras piezas que se combinan entre sí. Cada una resuelve un tipo
+        distinto de problema.
       </p>
     </div>
 
     <div class="mt-12 space-y-4">
-      {capacidades.map((capacidad) => (
-        <article class="border border-border-base bg-bg-raised p-6 sm:p-8 hover:border-border-strong transition">
-          <div class="flex items-start gap-4">
-            <div class="flex size-10 shrink-0 items-center justify-center border border-border-base bg-bg-overlay">
-              <Icon name={capacidad.icono} class="size-5 text-accent" />
+      {
+        capacidades.map((capacidad) => (
+          <a
+            href={capacidad.href}
+            class="group block border border-border-base bg-bg-raised p-6 sm:p-8 hover:border-accent transition"
+          >
+            <div class="flex items-start gap-4">
+              <div class="flex size-10 shrink-0 items-center justify-center border border-border-base bg-bg-overlay group-hover:border-accent transition">
+                <Icon name={capacidad.icono} class="size-5 text-accent" />
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="text-lg font-semibold text-text-primary group-hover:text-accent transition">
+                    {capacidad.nombre}
+                  </h3>
+                  <Icon
+                    name="lucide:arrow-up-right"
+                    class="size-4 shrink-0 text-text-muted group-hover:text-accent transition"
+                  />
+                </div>
+                <p class="mt-2 text-text-secondary leading-relaxed">{capacidad.descripcion}</p>
+                <p class="mt-4 text-xs">
+                  <span class="text-text-muted uppercase tracking-widest">Ejemplo →</span>
+                  <span class="ml-2 text-accent">{capacidad.ejemplo}</span>
+                </p>
+              </div>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-semibold text-text-primary">{capacidad.nombre}</h3>
-              <p class="mt-2 text-text-secondary leading-relaxed">{capacidad.descripcion}</p>
-              <p class="mt-4 text-xs">
-                <span class="text-text-muted uppercase tracking-widest">Ejemplo →</span>
-                <span class="ml-2 text-accent">{capacidad.ejemplo}</span>
-              </p>
-            </div>
-          </div>
-        </article>
-      ))}
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>

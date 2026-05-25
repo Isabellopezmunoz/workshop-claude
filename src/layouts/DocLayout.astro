@@ -1,0 +1,204 @@
+---
+import Layout from './Layout.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { Icon } from 'astro-icon/components'
+
+interface Heading {
+  depth: number
+  slug: string
+  text: string
+}
+
+interface Props {
+  title: string
+  description: string
+  icon: string
+  headings: Heading[]
+  currentSlug: string
+}
+
+const { title, description, icon, headings } = Astro.props
+
+const tocHeadings = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3)
+---
+
+<Layout title={`${title} · Workshop Claude`} description={description}>
+  <Header />
+
+  <div
+    class="mx-auto grid max-w-6xl gap-10 px-6 py-12 lg:grid-cols-[240px_1fr] lg:gap-16 lg:px-10 lg:py-16"
+  >
+    <aside class="hidden lg:block">
+      <div class="sticky top-24">
+        {
+          tocHeadings.length > 0 && (
+            <>
+              <p class="mb-4 text-xs uppercase tracking-widest text-text-muted">
+                // En esta página
+              </p>
+              <nav class="flex flex-col gap-1">
+                {tocHeadings.map((heading) => (
+                  <a
+                    href={`#${heading.slug}`}
+                    class:list={[
+                      'flex items-center gap-2 px-3 py-2 text-sm text-text-secondary transition hover:text-accent',
+                      heading.depth === 2
+                        ? 'border-l-2 border-transparent hover:border-accent hover:bg-accent-bg'
+                        : 'pl-6 text-xs',
+                    ]}
+                  >
+                    {heading.text}
+                  </a>
+                ))}
+              </nav>
+            </>
+          )
+        }
+      </div>
+    </aside>
+
+    <article class="min-w-0">
+      <header class="border-b border-border-base pb-8">
+        <div class="flex items-center gap-3 text-accent">
+          <Icon name={icon} class="size-5" />
+          <p class="text-xs uppercase tracking-widest">Documentación</p>
+        </div>
+        <h1 class="mt-4 text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
+          {title}
+        </h1>
+        <p class="mt-4 text-lg text-text-secondary">{description}</p>
+      </header>
+
+      <div class="prose-doc mt-10">
+        <slot />
+      </div>
+    </article>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .prose-doc {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .prose-doc h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    scroll-margin-top: 6rem;
+  }
+
+  .prose-doc h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    scroll-margin-top: 6rem;
+  }
+
+  .prose-doc p {
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-doc a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(163, 230, 53, 0.4);
+    transition: text-decoration-color 0.2s;
+  }
+
+  .prose-doc a:hover {
+    text-decoration-color: var(--color-accent);
+  }
+
+  .prose-doc strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  .prose-doc ul,
+  .prose-doc ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose-doc ul {
+    list-style-type: none;
+  }
+
+  .prose-doc ul > li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-doc ul > li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+  }
+
+  .prose-doc ol {
+    list-style-type: decimal;
+  }
+
+  .prose-doc ol > li {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-doc ol > li::marker {
+    color: var(--color-accent);
+  }
+
+  .prose-doc code {
+    background-color: var(--color-bg-overlay);
+    border: 1px solid var(--color-border-base);
+    padding: 0.125rem 0.375rem;
+    font-size: 0.875em;
+    color: var(--color-accent);
+  }
+
+  .prose-doc pre {
+    background-color: var(--color-bg-raised);
+    border: 1px solid var(--color-border-base);
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .prose-doc pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--color-text-primary);
+  }
+
+  .prose-doc blockquote {
+    border-left: 3px solid var(--color-accent);
+    background-color: var(--color-accent-bg);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    color: var(--color-text-secondary);
+  }
+
+  .prose-doc blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  .prose-doc hr {
+    border: none;
+    border-top: 1px solid var(--color-border-base);
+    margin: 3rem 0;
+  }
+</style>
