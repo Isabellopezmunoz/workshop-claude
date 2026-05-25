@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* ============================================================
+   FOUNDATIONS — design tokens del proyecto.
+   Definidos como @theme de Tailwind v4: cada token se expone
+   como utility (bg-bg-base, text-accent, font-mono, etc.) y
+   como CSS variable (var(--color-bg-base)) para uso directo.
+   ============================================================ */
+
+@theme {
+  /* ---------- Paleta de fondos (gama de negros) ---------- */
+  --color-bg-base: #0a0a0a;        /* negro casi puro — body */
+  --color-bg-raised: #131313;      /* superficies elevadas — cards, header */
+  --color-bg-overlay: #1a1a1a;     /* superficies sobre raised — inputs, code */
+  --color-bg-hover: #1f1f1f;       /* hover sobre raised */
+
+  /* ---------- Bordes ---------- */
+  --color-border-subtle: #1f1f1f;  /* borde apenas visible */
+  --color-border-base: #2a2a2a;    /* borde estándar de cards */
+  --color-border-strong: #3a3a3a;  /* hover / énfasis */
+
+  /* ---------- Texto ---------- */
+  --color-text-primary: #f5f5f5;   /* títulos, texto principal */
+  --color-text-secondary: #a3a3a3; /* texto secundario, párrafos */
+  --color-text-muted: #6b6b6b;     /* labels, captions, footer */
+
+  /* ---------- Acento (verde lima estilo terminal) ---------- */
+  --color-accent: #a3e635;         /* lime-400 */
+  --color-accent-hover: #bef264;   /* lime-300 — para hover */
+  --color-accent-muted: #65a30d;   /* lime-600 — texto sobre acento */
+  --color-accent-bg: rgba(163, 230, 53, 0.08); /* fondo translúcido */
+
+  /* ---------- Tipografía ---------- */
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ============================================================
+   BASE — estilos globales que aplican a todo el documento
+   ============================================================ */
+
+html {
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg-base);
+}

@@ -1,0 +1,40 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="border-b border-border-base">
+  <div class="mx-auto max-w-5xl px-6 py-24 sm:py-32">
+    <p class="mb-6 inline-flex items-center gap-2 border border-border-base bg-bg-raised px-3 py-1 text-xs uppercase tracking-widest text-text-secondary">
+      <Icon name="lucide:terminal" class="size-3.5 text-accent" />
+      Workshop · Aprende a usar Claude Code
+    </p>
+
+    <h1 class="text-4xl font-bold tracking-tight text-text-primary sm:text-6xl">
+      Claude Code, en serio.
+    </h1>
+
+    <p class="mt-6 max-w-2xl text-lg text-text-secondary sm:text-xl">
+      Una landing didáctica para entender las piezas que hacen útil a Claude Code en el día a día:
+      <span class="text-accent">skills</span>,
+      <span class="text-accent">hooks</span>,
+      <span class="text-accent">slash commands</span> y
+      <span class="text-accent">MCP</span>.
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a
+        href="#skills"
+        class="inline-flex items-center gap-2 bg-accent px-5 py-2.5 text-sm font-semibold text-bg-base hover:bg-accent-hover transition"
+      >
+        Empezar por las skills
+        <Icon name="lucide:arrow-right" class="size-4" />
+      </a>
+      <a
+        href="#recursos"
+        class="inline-flex items-center gap-2 border border-border-base px-5 py-2.5 text-sm font-semibold text-text-primary hover:border-border-strong hover:bg-bg-raised transition"
+      >
+        Ver recursos
+      </a>
+    </div>
+  </div>
+</section>

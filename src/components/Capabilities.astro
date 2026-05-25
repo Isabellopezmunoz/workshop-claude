@@ -1,0 +1,62 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const capacidades = [
+  {
+    nombre: 'Hooks',
+    icono: 'lucide:webhook',
+    descripcion:
+      'Comandos de shell que se ejecutan en respuesta a eventos del agente (antes/después de una tool, al terminar una respuesta, etc.). Te permiten automatizar formato, linters, notificaciones o cualquier acción reactiva.',
+    ejemplo: 'Ejecutar prettier cada vez que Claude edita un .ts',
+  },
+  {
+    nombre: 'Slash commands',
+    icono: 'lucide:slash',
+    descripcion:
+      'Atajos que invocas escribiendo "/" seguido del nombre. Algunos vienen con el CLI (/help, /clear, /config), y otros se definen tú mismo o vienen de skills.',
+    ejemplo: '/init, /review, /verify',
+  },
+  {
+    nombre: 'MCP servers',
+    icono: 'lucide:server',
+    descripcion:
+      'Model Context Protocol — servidores externos que dan a Claude acceso a herramientas y datos que no vienen de serie (Figma, Chrome DevTools, Gmail, bases de datos…).',
+    ejemplo: 'Conectar Figma para leer y escribir diseños desde el editor',
+  },
+];
+---
+
+<section id="capacidades" class="border-b border-border-base">
+  <div class="mx-auto max-w-5xl px-6 py-20">
+    <div class="max-w-3xl">
+      <p class="mb-3 text-xs uppercase tracking-widest text-accent">// 02 — Capacidades</p>
+      <h2 class="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
+        Más allá de las skills
+      </h2>
+      <p class="mt-4 text-lg text-text-secondary">
+        Claude Code se extiende con otras piezas que se combinan entre sí.
+        Cada una resuelve un tipo distinto de problema.
+      </p>
+    </div>
+
+    <div class="mt-12 space-y-4">
+      {capacidades.map((capacidad) => (
+        <article class="border border-border-base bg-bg-raised p-6 sm:p-8 hover:border-border-strong transition">
+          <div class="flex items-start gap-4">
+            <div class="flex size-10 shrink-0 items-center justify-center border border-border-base bg-bg-overlay">
+              <Icon name={capacidad.icono} class="size-5 text-accent" />
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-semibold text-text-primary">{capacidad.nombre}</h3>
+              <p class="mt-2 text-text-secondary leading-relaxed">{capacidad.descripcion}</p>
+              <p class="mt-4 text-xs">
+                <span class="text-text-muted uppercase tracking-widest">Ejemplo →</span>
+                <span class="ml-2 text-accent">{capacidad.ejemplo}</span>
+              </p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

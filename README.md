@@ -1,42 +1,67 @@
-# Workshop Claude — Landing de Perritos 🐶
+# Workshop Claude — Landing didáctica sobre Claude Code
 
-Proyecto de práctica para aprender a usar **Claude Code** y, en concreto, el sistema de **skills** personalizadas.
+Proyecto de práctica para aprender a usar **Claude Code**. El resultado es una landing page que explica las piezas principales del CLI (skills, hooks, slash commands, MCP) y sirve a la vez como ejercicio para entender el flujo de trabajo con Claude.
 
-## Objetivo
+## Stack
 
-Construir una landing page sencilla sobre perritos para probar el flujo completo de trabajo con Claude:
+- **[Astro](https://astro.build)** — sitio estático, componentes `.astro`.
+- **[Tailwind CSS v4](https://tailwindcss.com)** — utilidades directamente en el markup.
+- **[Vercel](https://vercel.com)** — despliegue gratuito desde el repo.
 
-- Invocar skills personalizadas (`/html`, `/css`).
-- Iterar sobre el diseño y el contenido con prompts.
-- Aprender cómo Claude Code edita ficheros, mantiene contexto y usa herramientas.
-
-## Skills usadas en este proyecto
-
-- **`html`** — genera y edita el HTML semántico de `index.html`. Enlaza Tailwind vía CDN.
-- **`css`** — aplica estilos con utilidades de Tailwind directamente en el HTML (sin `styles.css` aparte).
-
-## Estructura prevista
+## Estructura del proyecto
 
 ```
 workshop-claude/
-├── README.md      ← este archivo
-└── index.html     ← landing (HTML + Tailwind CDN)
+├── public/                  ← favicon y assets estáticos
+├── src/
+│   ├── components/          ← un componente por sección
+│   │   ├── Hero.astro
+│   │   ├── Skills.astro
+│   │   ├── Capabilities.astro
+│   │   ├── Resources.astro
+│   │   └── Footer.astro
+│   ├── layouts/
+│   │   └── Layout.astro     ← <head>, meta, body base
+│   ├── pages/
+│   │   └── index.astro      ← compone las secciones
+│   └── styles/
+│       └── global.css       ← @import "tailwindcss"
+├── .claude/
+│   └── skills/              ← skills propias del proyecto
+├── astro.config.mjs
+└── package.json
 ```
 
 ## Secciones de la landing
 
-1. **Hero** — título grande, subtítulo y CTA ("Adopta un perrito").
-2. **Galería** — grid con fotos de perritos.
-3. **Sobre nosotros** — breve texto sobre la "protectora".
-4. **Footer** — enlaces de contacto y redes.
+1. **Hero** — presentación y CTAs.
+2. **Skills** — qué son, tipos (project / personal / plugin) y cómo se invocan.
+3. **Capabilities** — hooks, slash commands y MCP servers.
+4. **Resources** — enlaces a documentación oficial y recursos útiles.
+5. **Footer**.
 
-## Cómo trabajar en el proyecto
+## Comandos
 
-1. Pídele a Claude cambios concretos: *"añade una sección hero con un CTA"*, *"haz la galería responsive"*, etc.
-2. Si quieres invocar una skill explícitamente, escribe `/html` o `/css` seguido de tu instrucción.
-3. Abre `index.html` en el navegador para ver los cambios — no hace falta build, Tailwind se carga por CDN.
+| Comando            | Acción                                          |
+| :----------------- | :---------------------------------------------- |
+| `npm install`      | Instala dependencias                            |
+| `npm run dev`      | Arranca el dev server en `localhost:4321`       |
+| `npm run build`    | Construye el sitio en `./dist/`                 |
+| `npm run preview`  | Previsualiza el build local antes de desplegar  |
+
+## Cómo trabajar en el proyecto con Claude Code
+
+1. Arranca el dev server: `npm run dev`.
+2. Pide cambios concretos a Claude: *"añade una sección de FAQ"*, *"cambia la paleta a tonos verdes"*, etc.
+3. Si tienes skills definidas en `.claude/skills/`, invócalas explícitamente con `/nombre-skill` o deja que se activen solas según su `description`.
+
+## Despliegue en Vercel
+
+1. Entra en [vercel.com](https://vercel.com) y conecta el repo de GitHub.
+2. Vercel detecta Astro automáticamente — no hace falta configurar build ni output.
+3. Cada `git push` a `main` dispara un nuevo deploy.
 
 ## Notas de aprendizaje
 
-- Las **skills** viven en `.claude/skills/` y describen *cuándo* y *cómo* Claude debe actuar en un dominio concreto.
-- Este proyecto es deliberadamente pequeño para centrar la atención en el flujo de Claude, no en la complejidad del código.
+- Las **skills** viven en `.claude/skills/` y describen *cuándo* y *cómo* Claude debe actuar en un dominio concreto del proyecto.
+- Este repo es deliberadamente pequeño: el foco está en el flujo de Claude Code, no en la complejidad del código.
