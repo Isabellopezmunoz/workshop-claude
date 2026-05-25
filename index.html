@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perritos en adopción 🐶</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-amber-50 text-stone-800 font-sans">
+    <header class="px-6 py-4 flex items-center justify-between max-w-6xl mx-auto">
+      <a href="#" class="text-xl font-bold">🐶 Patitas Felices</a>
+      <nav class="space-x-6 text-sm">
+        <a href="#galeria" class="hover:text-amber-600">Galería</a>
+        <a href="#sobre" class="hover:text-amber-600">Sobre nosotros</a>
+        <a href="#contacto" class="hover:text-amber-600">Contacto</a>
+      </nav>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 py-20 text-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+        Encuentra a tu mejor amigo 🐾
+      </h1>
+      <p class="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto mb-10">
+        Cientos de perritos buscan un hogar lleno de amor. Adopta hoy y cambia
+        dos vidas: la suya y la tuya.
+      </p>
+      <a
+        href="#galeria"
+        class="inline-block bg-amber-600 text-white font-semibold px-8 py-4 rounded-full hover:bg-amber-700 transition"
+      >
+        Adopta un perrito
+      </a>
+    </section>
+
+    <section id="galeria" class="max-w-6xl mx-auto px-6 py-16">
+      <h2 class="text-3xl font-bold mb-10 text-center">Conócelos</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=600"
+            alt="Luna"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-5">
+            <h3 class="font-bold text-lg">Luna</h3>
+            <p class="text-sm text-stone-600">2 años · Mestiza · Cariñosa</p>
+          </div>
+        </article>
+        <article class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600"
+            alt="Rocky"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-5">
+            <h3 class="font-bold text-lg">Rocky</h3>
+            <p class="text-sm text-stone-600">4 años · Labrador · Juguetón</p>
+          </div>
+        </article>
+        <article class="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600"
+            alt="Nala"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-5">
+            <h3 class="font-bold text-lg">Nala</h3>
+            <p class="text-sm text-stone-600">1 año · Beagle · Curiosa</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sobre" class="bg-white py-20">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-6">Sobre nosotros</h2>
+        <p class="text-stone-600 leading-relaxed">
+          En Patitas Felices llevamos más de 10 años rescatando perritos
+          abandonados y buscándoles familias responsables. Cada adopción es un
+          proceso cuidadoso para asegurar el mejor encaje posible.
+        </p>
+      </div>
+    </section>
+
+    <section id="contacto" class="max-w-3xl mx-auto px-6 py-20" aria-labelledby="contacto-titulo">
+      <h2 id="contacto-titulo" class="text-3xl font-bold mb-4 text-center">Contáctanos</h2>
+      <p class="text-stone-600 text-center mb-10">
+        ¿Te interesa adoptar o quieres saber más? Escríbenos y te responderemos en menos de 24h.
+      </p>
+      <form class="grid gap-5" aria-label="Formulario de contacto">
+        <div>
+          <label for="nombre" class="block text-sm font-semibold mb-1">Nombre</label>
+          <input
+            id="nombre"
+            name="nombre"
+            type="text"
+            required
+            class="w-full rounded-lg border border-stone-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-semibold mb-1">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            class="w-full rounded-lg border border-stone-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500"
+          />
+        </div>
+        <div>
+          <label for="mensaje" class="block text-sm font-semibold mb-1">Mensaje</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="5"
+            required
+            class="w-full rounded-lg border border-stone-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-500"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="bg-amber-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-amber-700 transition justify-self-center"
+        >
+          Enviar mensaje
+        </button>
+      </form>
+    </section>
+
+    <footer class="bg-stone-900 text-stone-300 py-12">
+      <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm">© 2026 Patitas Felices · Hecho con 🐾 y Claude</p>
+        <div class="space-x-4 text-sm">
+          <a href="#" class="hover:text-white">Instagram</a>
+          <a href="#" class="hover:text-white">Email</a>
+          <a href="#" class="hover:text-white">Teléfono</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
